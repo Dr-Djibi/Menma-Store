@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique en Ligne - Contact WhatsApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#25D366',
+                        secondary: '#128C7E',
+                        accent: '#075E54'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-shopping-bag text-primary text-2xl"></i>
+                <h1 class="text-2xl font-bold text-gray-800">Menma Store</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Accueil</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Produits</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors">À propos</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-green-400 to-emerald-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Découvrez Nos Produits</h2>
+            <p class="text-xl mb-8">Qualité premium, service exceptionnel</p>
+            <div class="flex justify-center">
+                <div class="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold shadow-lg">
+                    <i class="fab fa-whatsapp mr-2"></i> Commandez via WhatsApp !
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Nos Produits Phares</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <span class="text-gray-500 text-lg">Produit 1</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Smartphone Premium</h4>
+                        <p class="text-gray-600 mb-4">Écran 6.7", 128GB, Caméra 48MP</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-primary">299€</span>
+                            <button onclick="selectProduct('PROD001', 'Smartphone Premium', '299€')" 
+                                    class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <span class="text-gray-500 text-lg">Produit 2</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Casque Bluetooth</h4>
+                        <p class="text-gray-600 mb-4">Son HD, 30h d'autonomie, Noise Cancelling</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-primary">149€</span>
+                            <button onclick="selectProduct('PROD002', 'Casque Bluetooth', '149€')" 
+                                    class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="bg-gray-200 h-48 flex items-center justify-center">
+                        <span class="text-gray-500 text-lg">Produit 3</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold mb-2">Montre Connectée</h4>
+                        <p class="text-gray-600 mb-4">GPS intégré, Suivi santé, Étanche</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-primary">199€</span>
+                            <button onclick="selectProduct('PROD003', 'Montre Connectée', '199€')" 
+                                    class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-center mb-6 text-gray-800">Commander via WhatsApp</h3>
+                <p class="text-center text-gray-600 mb-8">Remplissez le formulaire et nous vous contacterons immédiatement sur WhatsApp !</p>
+                
+                <form id="whatsappForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom complet *</label>
+                        <input type="text" id="name" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Numéro de téléphone *</label>
+                        <input type="tel" id="phone" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                               placeholder="+33 6 12 34 56 78">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" id="email" 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message supplémentaire</label>
+                        <textarea id="message" rows="4" 
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                  placeholder="Quantité souhaitée, questions, etc."></textarea>
+                    </div>
+                    
+                    <div id="selectedProduct" class="hidden">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Produit sélectionné</label>
+                        <div id="productInfo" class="bg-gray-50 p-3 rounded-lg"></div>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-primary hover:bg-secondary text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-2"></i> Envoyer sur WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 MaBoutique. Tous droits réservés.</p>
+            <p class="mt-2">Service client disponible 7j/7</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variables pour stocker les informations du client et du produit
+        let clientInfo = {
+            name: '',
+            phone: '',
+            email: '',
+            message: ''
+        };
+        
+        // Constante pour les informations du produit sélectionné
+        const selectedProduct = {
+            id: '',
+            name: '',
+            price: ''
+        };
+
+        // Fonction pour sélectionner un produit
+        function selectProduct(productId, productName, productPrice) {
+            selectedProduct.id = productId;
+            selectedProduct.name = productName;
+            selectedProduct.price = productPrice;
+            
+            // Afficher le produit sélectionné dans le formulaire
+            document.getElementById('selectedProduct').classList.remove('hidden');
+            document.getElementById('productInfo').innerHTML = `
+                <strong>${productName}</strong><br>
+                Référence: ${productId}<br>
+                Prix: ${productPrice}
+            `;
+        }
+
+        // Gestion de l'envoi du formulaire
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupérer les informations du client
+            clientInfo.name = document.getElementById('name').value;
+            clientInfo.phone = document.getElementById('phone').value;
+            clientInfo.email = document.getElementById('email').value;
+            clientInfo.message = document.getElementById('message').value;
+            
+            // Construire le message à envoyer
+            let message = `Bonjour, je souhaite commander un produit !\n\n`;
+            message += `📋 Informations client :\n`;
+            message += `Nom : ${clientInfo.name}\n`;
+            message += `Téléphone : ${clientInfo.phone}\n`;
+            
+            if (clientInfo.email) {
+                message += `Email : ${clientInfo.email}\n`;
+            }
+            
+            if (selectedProduct.id) {
+                message += `\n📦 Produit sélectionné :\n`;
+                message += `Nom : ${selectedProduct.name}\n`;
+                message += `Référence : ${selectedProduct.id}\n`;
+                message += `Prix : ${selectedProduct.price}\n`;
+            }
+            
+            if (clientInfo.message) {
+                message += `\n📝 Message supplémentaire :\n`;
+                message += `${clientInfo.message}\n`;
+            }
+            
+            message += `\nMerci de me contacter pour finaliser ma commande !`;
+            
+            // Encoder le message pour l'URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Numéro de téléphone du vendeur (à remplacer par votre numéro WhatsApp)
+            const sellerNumber = '224625968097'; // Format international sans le +
+            
+            // Créer l'URL WhatsApp
+            const whatsappUrl = `https://wa.me/${sellerNumber}?text=${encodedMessage}`;
+            
+            // Ouvrir WhatsApp dans un nouvel onglet
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
