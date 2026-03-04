@@ -325,6 +325,42 @@ h2 {
     background: rgba(39, 174, 96, 0.1);
 }
 
+/* lien vers site public distinct pour pouvoir ajuster espacement */
+.menu-admin .public-link {
+    color: #ccc;
+    text-decoration: none;
+}
+.menu-admin .public-link span {
+    font-weight: 500;
+}
+.menu-admin .public-link:hover {
+    color: white;
+    background: rgba(255,255,255,0.1);
+}
+
+/* marge à gauche pour les deux derniers éléments afin de les séparer visuellement */
+.menu-admin a.public-link,
+.menu-admin .btn-copy-link {
+    margin-left: 10px;
+}
+
+/* message de succès pour les formulaires */
+.success {
+    display: inline-block;
+    background: rgba(39, 174, 96, 0.08);
+    color: var(--success);
+    border: 1px solid rgba(39, 174, 96, 0.15);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+/* s'assurer que le formulaire dans la carte a un padding cohérent */
+.admin-card form.admin-form {
+    padding: 20px;
+}
+
 /* Barre d'outils dans les cartes */
 .card-toolbar {
     display: flex;

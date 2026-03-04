@@ -18,11 +18,6 @@ $orders = $pdo->query("SELECT * FROM commandes
 ?>
 <div class="admin-card">
   <h3>Commandes</h3>
-  <div class="card-toolbar">
-    <button id="copyLinkBtn" class="btn-copy-link" title="Copier le lien de la boutique publique">
-      <i class="fas fa-link"></i> Copier lien boutique
-    </button>
-  </div>
   <?php if (isset($msg)): ?><p class="success"><?= $msg ?></p><?php endif; ?>
   <a href="?archive_all=1" class="btn-save"
      onclick="return confirm('Archiver toutes les commandes expédiées ?')">

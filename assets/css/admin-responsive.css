@@ -79,6 +79,11 @@
         font-weight: 500;
     }
 
+    /* on cache le texte du bouton copie pour gagner de la place sur mobile/tablette */
+    .menu-admin .btn-copy-link span {
+        display: none;
+    }
+
     .menu-admin a:hover span,
     .menu-admin .btn-copy-link:hover {
         color: white;
