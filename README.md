@@ -50,3 +50,24 @@ Ce dépôt contient une petite boutique PHP. Cette configuration prépare le pro
 
 - PWA: le tableau de bord d'administration (seulement l'espace `/admin/`) possède désormais `admin/manifest.json`, `admin/service-worker.js` et `admin/offline.html` pour un mode hors-ligne basique. Le service worker est enregistré depuis `includes/footer_admin.php` avec le scope `/admin/`.
 
+## Migrations automatiques & déploiement (nouveau)
+
+- **Pas besoin d'exécuter init_postgres.sql manuellement** ! Un script de migration (`db/migrate.php`) s'exécute automatiquement au premier accès de la base de données et crée/ajoute :
+  * La colonne `visible boolean` sur `commandes`.
+  * La table `settings` s'il elle n'existe pas.
+  * Les valeurs par défaut pour la configuration du site.
+  
+  Cela fonctionne en local (docker-compose) et en production (Render) sans intervention manuelle.
+
+## Design responsive & mobile-first (nouveau)
+
+- Le site public est entièrement **optimisé pour mobile** avec un Hamburger menu 3 barres :
+  * Menu automatiquement masqué sur écrans < 768px.
+  * Notre bouton menu animé qui se referme quand on clique sur un lien.
+  * Typo, espacement et grille de produits adaptés à chaque breakpoint (1024px, 768px, 480px).
+  * Images et badges correctement dimensionnés.
+  
+- **Font Awesome CDN** intégré pour les icônes (utilisé dans le header et éventuellement le reste).
+
+- Les CSS publiques (`assets/css/style.css`) comprennent des media queries complètes pour tablette et mobile. Testez en rétrécissant la fenêtre du navigateur ou en inspectant avec DevTools !
+

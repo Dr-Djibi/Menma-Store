@@ -25,6 +25,11 @@ try {
     if ($driver === 'pgsql') {
         $pdo->exec("SET NAMES 'UTF8'");
     }
+
+    // Exécuter les migrations si nécessaire
+    require_once __DIR__ . '/../db/migrate.php';
+    run_migrations($pdo);
+
 } catch (PDOException $e) {
     // Afficher un message générique en production; garder le détail en développement
     $msg = getenv('APP_ENV') === 'production' ? 'Erreur de connexion à la base de données.' : $e->getMessage();
