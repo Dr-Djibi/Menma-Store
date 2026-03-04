@@ -83,8 +83,12 @@ include __DIR__ . '/../includes/header_admin.php';
 
     <div class="admin-card mt-40">
         <h3><i class="fas fa-truck"></i> Commandes</h3>
+        <div class="card-toolbar">
+            <a href="orders.php" class="btn-save btn-new-product">
+                <i class="fas fa-arrow-right"></i> Ouvrir les commandes
+            </a>
+        </div>
         <p>Voir et gérer toutes les commandes dans une page dédiée.</p>
-        <a href="orders.php" class="btn-save">Ouvrir les commandes</a>
     </div>
 </div>
 

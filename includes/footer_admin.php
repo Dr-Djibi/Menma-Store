@@ -28,5 +28,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+
+<script src="/assets/js/admin-utils.js"></script>
 </body>
 </html>

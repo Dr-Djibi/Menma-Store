@@ -96,6 +96,28 @@ body {
     background: rgba(254, 95, 85, 0.1);
 }
 
+/* bouton de copie dans le menu */
+.menu-admin .btn-copy-link {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.2rem;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-admin .btn-copy-link:hover {
+    color: white;
+    background: rgba(255,255,255,0.1);
+}
+
+/* variante compacte utilisée dans le menu */
+.btn-copy-link.small {
+    font-size: 1rem;
+    padding: 6px;
+}
+
 /* ==========================================================================
    3. LAYOUT ET CONTENEURS
    ========================================================================== */
@@ -195,6 +217,12 @@ h2 {
     box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
 }
 
+/* espace entre icône et texte dans certains boutons */
+.btn-save i,
+.btn-new-product i {
+    margin-right: 8px;
+}
+
 .btn-cancel {
     background: #e0e0e0;
     color: #333;
@@ -224,6 +252,125 @@ h2 {
     padding: 10px 20px;
     font-size: 0.9rem;
     margin-top: 0;
+}
+
+/* Styles pour les boutons d'action */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-action.btn-primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.btn-action.btn-primary:hover {
+    background: #2483c1;
+    border-color: #2483c1;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(52, 152, 219, 0.3);
+}
+
+.btn-action.btn-danger {
+    background: var(--secondary);
+    color: white;
+    border-color: var(--secondary);
+}
+
+.btn-action.btn-danger:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3);
+}
+
+/* Bouton copier lien */
+.btn-copy-link {
+    background: white;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.btn-copy-link:hover {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 3px 8px rgba(52, 152, 219, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-copy-link.copied {
+    border-color: var(--success);
+    color: var(--success);
+    background: rgba(39, 174, 96, 0.1);
+}
+
+/* Barre d'outils dans les cartes */
+.card-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px 0;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Cellule d'actions dans les tableaux */
+.actions-cell {
+    display: flex;
+    gap: 10px;
+}
+
+/* Groupes de formulaire */
+fieldset.form-section {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fafafa;
+}
+
+fieldset.form-section legend {
+    background: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+fieldset.form-section label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+fieldset.form-section input[type="text"],
+fieldset.form-section input[type="color"],
+fieldset.form-section input[type="file"] {
+    margin-bottom: 10px;
 }
 
 .dashboard-header {
@@ -287,6 +434,10 @@ h2 {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.admin-card form {
+    padding: 20px;
 }
 
 .table-responsive {
@@ -504,5 +655,47 @@ footer {
         border-bottom: none;
         justify-content: center;
         gap: 20px;
+    }
+
+    /* Styles mobiles pour les nouveaux éléments */
+    .card-toolbar {
+        padding: 10px 15px 5px;
+    }
+
+    .btn-copy-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+
+    .btn-copy-link span {
+        display: none;
+    }
+
+    .actions-cell {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn-action {
+        width: 100%;
+        padding: 10px;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+
+    fieldset.form-section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    fieldset.form-section legend {
+        padding: 5px 8px;
+        font-size: 0.95rem;
+    }
+
+    .admin-card h3 {
+        padding: 15px;
+        font-size: 1.1rem;
     }
 }

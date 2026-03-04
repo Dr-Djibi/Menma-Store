@@ -47,6 +47,10 @@ header("Pragma: no-cache");
         <a href="settings.php" title="Réglages"><i class="fas fa-cog"></i> <span>Réglages</span></a>
         <a href="admins.php" title="Admins"><i class="fas fa-users"></i> <span>Admins</span></a>
         <a href="../index.php" target="_blank" title="Voir le site public"><i class="fas fa-eye"></i> <span>Public</span></a>
+        <!-- bouton copie lien public dans le menu -->
+        <button id="copyMenuLinkBtn" class="btn-copy-link small" title="Copier le lien public">
+            <i class="fas fa-link"></i>
+        </button>
         <a href="logout.php" class="logout" title="Déconnexion"><i class="fas fa-power-off"></i> <span>Déco</span></a>
     </div>
 </nav>

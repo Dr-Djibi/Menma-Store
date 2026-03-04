@@ -18,6 +18,11 @@ $orders = $pdo->query("SELECT * FROM commandes
 ?>
 <div class="admin-card">
   <h3>Commandes</h3>
+  <div class="card-toolbar">
+    <button id="copyLinkBtn" class="btn-copy-link" title="Copier le lien de la boutique publique">
+      <i class="fas fa-link"></i> Copier lien boutique
+    </button>
+  </div>
   <?php if (isset($msg)): ?><p class="success"><?= $msg ?></p><?php endif; ?>
   <a href="?archive_all=1" class="btn-save"
      onclick="return confirm('Archiver toutes les commandes expédiées ?')">
@@ -30,11 +35,15 @@ $orders = $pdo->query("SELECT * FROM commandes
       <?php foreach($orders as $com): ?>
         <tr>
           <td><?= htmlspecialchars($com['nom_client']) ?></td>
-          <td><?= htmlspecialchars($com['statut_livraison']) ?></td>
-          <td>
-            <a href="update_livraison.php?id=<?= $com['id'] ?>&statut=Expédié">Exp</a>
+          <td><span class="status-badge"><?= htmlspecialchars($com['statut_livraison']) ?></span></td>
+          <td class="actions-cell">
+            <a href="update_livraison.php?id=<?= $com['id'] ?>&statut=Expédié" class="btn-action btn-primary">
+              <i class="fas fa-shipping-fast"></i> Expédier
+            </a>
             <a href="archive_order.php?id=<?= $com['id'] ?>"
-               onclick="return confirm('Archiver ?')">Archiver</a>
+               onclick="return confirm('Archiver cette commande ?')" class="btn-action btn-danger">
+              <i class="fas fa-archive"></i> Archiver
+            </a>
           </td>
         </tr>
       <?php endforeach; ?>

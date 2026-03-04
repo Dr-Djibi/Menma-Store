@@ -62,7 +62,8 @@
         padding: 15px 0;
     }
 
-    .menu-admin a {
+    .menu-admin a,
+    .menu-admin .btn-copy-link {
         display: flex;
         align-items: center;
         gap: 15px;
@@ -78,7 +79,8 @@
         font-weight: 500;
     }
 
-    .menu-admin a:hover span {
+    .menu-admin a:hover span,
+    .menu-admin .btn-copy-link:hover {
         color: white;
     }
 
