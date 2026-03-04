@@ -46,12 +46,12 @@ header("Pragma: no-cache");
         <a href="orders.php" title="Commandes"><i class="fas fa-truck"></i> <span>Commandes</span></a>
         <a href="settings.php" title="Réglages"><i class="fas fa-cog"></i> <span>Réglages</span></a>
         <a href="admins.php" title="Admins"><i class="fas fa-users"></i> <span>Admins</span></a>
-        <a href="../index.php" target="_blank" title="Voir le site public" class="public-link">
-            <i class="fas fa-eye"></i> <span>Public</span>
+        <a href="../index.php" target="_blank" title="Voir le site public" class="public-link btn-public">
+            <i class="fas fa-eye"></i> <span>Voir</span>
         </a>
         <!-- lien qui déclenche la copie du lien public -->
         <a href="#" id="copyMenuLinkBtn" class="btn-copy-link" title="Copier le lien de la boutique publique">
-            <i class="fas fa-link"></i> <span>Copier lien</span>
+            <i class="fas fa-link"></i> <span>Copier</span>
         </a>
         <a href="logout.php" class="logout" title="Déconnexion"><i class="fas fa-power-off"></i> <span>Déco</span></a>
     </div>

@@ -63,7 +63,8 @@
     }
 
     .menu-admin a,
-    .menu-admin .btn-copy-link {
+    .menu-admin .btn-copy-link,
+    .menu-admin .btn-public {
         display: flex;
         align-items: center;
         gap: 15px;
