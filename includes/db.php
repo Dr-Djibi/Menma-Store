@@ -30,3 +30,28 @@ try {
     $msg = getenv('APP_ENV') === 'production' ? 'Erreur de connexion à la base de données.' : $e->getMessage();
     die($msg);
 }
+
+// helpers for site settings -------------------------------------------------
+
+/**
+ * Returns the value associated with a settings key, or $default if missing.
+ */
+function setting(string $key, $default = null) {
+    global $pdo;
+    $stmt = $pdo->prepare('SELECT value FROM settings WHERE key = ?');
+    $stmt->execute([$key]);
+    $v = $stmt->fetchColumn();
+    return $v !== false ? $v : $default;
+}
+
+/**
+ * Insert or update a configuration key/value.
+ */
+function set_setting(string $key, string $value) {
+    global $pdo;
+    $stmt = $pdo->prepare(
+        'INSERT INTO settings(key,value) VALUES(?,?)
+         ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value'
+    );
+    $stmt->execute([$key, $value]);
+}

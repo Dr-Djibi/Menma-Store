@@ -11,6 +11,7 @@ $query = $pdo->query("
         SUM(p.prix) as chiffre_affaires 
     FROM commandes c 
     JOIN produits p ON c.id_produit = p.id
+    WHERE c.visible = true
 ");
 $stats = $query->fetch();
 
@@ -19,6 +20,7 @@ $top_ventes = $pdo->query("
     SELECT p.nom, COUNT(c.id) as nb 
     FROM commandes c 
     JOIN produits p ON c.id_produit = p.id 
+    WHERE c.visible = true
     GROUP BY p.nom 
     ORDER BY nb DESC 
     LIMIT 5

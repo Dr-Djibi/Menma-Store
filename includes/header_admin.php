@@ -12,14 +12,20 @@ header("Pragma: no-cache");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
-    <link rel="manifest" href="/admin/manifest.json">
+    <link rel="manifest" href="/admin/manifest.php">
     <link rel="apple-touch-icon" href="/assets/icons/admin-192.png">
-    <meta name="theme-color" content="#2b6cb0">
+    <meta name="theme-color" content="<?= htmlspecialchars(setting('admin_theme_color','#2b6cb0')) ?>">
 </head>
 <body>
 
 <nav class="nav-admin">
-    <a href="index.php" class="logo">STORE<span>ADMIN</span></a>
+    <?php
+    if (!function_exists('setting')) {
+        include __DIR__ . '/db.php';
+    }
+    $appName = setting('admin_app_name','STORE ADMIN');
+    ?>
+    <a href="index.php" class="logo"><?= htmlspecialchars($appName) ?><span>ADMIN</span></a>
     
     <div class="menu-admin">
         <?php if (isset($_SESSION['admin_username'])): ?>
@@ -30,6 +36,9 @@ header("Pragma: no-cache");
         <a href="add_product.php" title="Ajouter un produit"><i class="fas fa-plus-circle"></i></a>
         <a href="add_comment.php" title="Ajouter un avis client"><i class="fas fa-star"></i></a>
         <a href="stats.php" title="Statistiques"><i class="fas fa-chart-line"></i></a>
+        <a href="orders.php" title="Commandes"><i class="fas fa-truck"></i></a>
+        <a href="settings.php" title="Réglages"><i class="fas fa-cog"></i></a>
+        <a href="admins.php" title="Admins"><i class="fas fa-users"></i></a>
         <a href="../index.php" target="_blank" title="Voir le site public"><i class="fas fa-eye"></i></a>
         <a href="logout.php" class="logout" title="Déconnexion"><i class="fas fa-power-off"></i></a>
     </div>

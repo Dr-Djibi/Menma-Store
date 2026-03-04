@@ -30,8 +30,26 @@ CREATE TABLE IF NOT EXISTS commandes (
     nom_client varchar(255) NOT NULL,
     adresse_livraison text NOT NULL,
     statut_livraison varchar(50) NOT NULL DEFAULT 'en attente',
+    visible boolean NOT NULL DEFAULT true,
     created_at timestamp with time zone DEFAULT now()
 );
+
+-- Table de configuration clé/valeur pour personnalisation
+CREATE TABLE IF NOT EXISTS settings (
+    key   varchar(100) PRIMARY KEY,
+    value text NOT NULL
+);
+
+-- valeurs par défaut si inexistantes
+INSERT INTO settings(key,value) VALUES
+('hero_title','LIVRAISON GRATUITE'),
+('hero_subtitle','Commandez sur WhatsApp • Payez à la livraison'),
+('shop_name','Menma Shop'),
+('whatsapp_number','224625968097'),
+('admin_app_name','Menma Shop Admin'),
+('admin_app_short_name','Menma Admin'),
+('admin_theme_color','#1a1a1a')
+ON CONFLICT (key) DO NOTHING;
 
 -- Indexes d'exemple
 CREATE INDEX IF NOT EXISTS idx_commentaires_id_produit ON commentaires(id_produit);

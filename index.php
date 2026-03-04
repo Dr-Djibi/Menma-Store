@@ -1,5 +1,10 @@
 <?php 
 include 'includes/db.php'; 
+// récupérer quelques réglages personnalisés
+$heroTitle    = setting('hero_title', 'LIVRAISON GRATUITE');
+$heroSubtitle = setting('hero_subtitle', 'Commandez sur WhatsApp • Payez à la livraison');
+$shopName     = setting('shop_name', 'Menma Shop');
+
 include 'includes/header.php'; 
 
 // --- CONFIGURATION PAGINATION ---
@@ -20,8 +25,8 @@ $query->execute();
 ?>
 
 <div class="hero-section">
-    <h1>LIVRAISON GRATUITE</h1>
-    <p>Commandez sur WhatsApp • Payez à la livraison</p>
+    <h1><?= htmlspecialchars($heroTitle) ?></h1>
+    <p><?= htmlspecialchars($heroSubtitle) ?></p>
 </div>
 
 <div class="container">
@@ -43,7 +48,7 @@ $query->execute();
                 <div class="product-content">
                     <h3><?= htmlspecialchars($p['nom']) ?></h3>
                     <p class="product-price"><?= number_format($p['prix'], 0) ?> FGn</p>
-                    <p class="shipping-info">✅ Livraison Gratuite</p>
+                    <p class="shipping-info">✅ <?= htmlspecialchars($heroTitle) ?></p>
                     
                     <div class="product-footer">
                         <a href="produit_detail.php?id=<?= $p['id'] ?>" class="btn-view"><i class="fas fa-shopping-bag"></i> Commander</a>

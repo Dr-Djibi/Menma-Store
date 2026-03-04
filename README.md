@@ -22,7 +22,24 @@ Ce dépôt contient une petite boutique PHP. Cette configuration prépare le pro
 
 - `includes/db.php` utilise désormais les variables d'environnement et supporte `pgsql` et `mysql`.
 - L'image Docker installe `pdo_pgsql` pour communiquer avec PostgreSQL.
-- Une table `admins` a été ajoutée dans `db/init_postgres.sql` pour l'authentification administrateur (username + mot de passe haché).
+- La base comporte maintenant une table `settings` (clé/valeur) pour stocker des éléments personnalisables : texte de la bannière, nom de la boutique, numéro WhatsApp, informations de l'application admin, etc. Vous pouvez modifier ces réglages depuis le nouvel onglet *Réglages* du panneau d'administration.
+- Le schéma `db/init_postgres.sql` a été étendu :
+  * colonne `visible boolean` sur `commandes` (pour archiver les commandes sans les supprimer) ;
+  * création de `settings` ;
+  * insertion de valeurs par défaut pour les clés principales.
+  Si vous avez déjà une base en production, exécutez les requêtes suivantes pour mettre à jour :
+
+  ```sql
+  ALTER TABLE commandes ADD COLUMN visible boolean NOT NULL DEFAULT true;
+  CREATE TABLE IF NOT EXISTS settings (
+      key varchar(100) PRIMARY KEY,
+      value text NOT NULL
+  );
+  -- puis insérer les valeurs par défaut (copier depuis init_postgres.sql)
+  ```
+
+- Une page d'administration `admin/settings.php` permet à un administrateur logué de modifier le texte d'en-tête, le nom de la boutique, le numéro WhatsApp, le nom/couleur/icône de l'application PWA, etc. Les modifications s'appliquent immédiatement sur le site public.
+- Il existe désormais des écrans séparés pour la gestion des commandes (`admin/orders.php`) et la liste des administrateurs (`admin/admins.php`). Les commandes expédiées peuvent être "archivées" (masquées) automatiquement ou manuellement.
 - Pour créer un administrateur, exécuter (dans le conteneur ou local) :
 
   php admin/create_admin.php <username> <password>

@@ -1,5 +1,9 @@
 <?php 
 include 'includes/db.php'; 
+// valeurs personnalisables
+$heroSubtitle = setting('hero_subtitle','Commandez sur WhatsApp • Payez à la livraison');
+$whatsappNumber = setting('whatsapp_number','224625968097');
+
 include 'includes/header.php'; 
 
 // 1. Récupération du produit
@@ -36,7 +40,7 @@ if (!$p) {
         </div>
 
         <div class="product-info">
-            <span class="badge-shipping">Livraison Gratuite</span>
+            <span class="badge-shipping"><?= htmlspecialchars(setting('hero_title','LIVRAISON GRATUITE')) ?></span>
             <h1 class="product-title"><?= htmlspecialchars($p['nom']) ?></h1>
             <p class="price-big"><?= number_format($p['prix'], 0, ',', ' ') ?> FGn</p>
             
@@ -85,10 +89,11 @@ if (!$p) {
         const prix = "<?= number_format($p['prix'], 0, ',', ' ') ?> FGn";
 
         // 1. Préparer le message WhatsApp
+        const shippingText = <?= json_encode(setting('hero_title','LIVRAISON GRATUITE')) ?>;
         const message = `Bonjour Menma Shop ! Je commande :
 📦 *Produit :* ${produit}
 💰 *Prix :* ${prix}
-🚚 *Livraison :* GRATUITE
+🚚 *Livraison :* ${shippingText}
 --------------------------
 👤 *Client :* ${nom}
 📍 *Adresse :* ${adresse}
@@ -96,7 +101,7 @@ if (!$p) {
 _Je paierai à la réception._`;
 
         // 2. Ouvrir WhatsApp dans un nouvel onglet
-        const whatsappUrl = `https://wa.me/224625968097?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `https://wa.me/<?= htmlspecialchars($whatsappNumber) ?>?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
 
         // 3. Laisser le formulaire s'envoyer normalement vers Traitement_achat.php

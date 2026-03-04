@@ -23,7 +23,7 @@ include __DIR__ . '/../includes/header_admin.php';
     <?php
     // Résumé rapide des statistiques
     $totalProducts = (int) $pdo->query("SELECT COUNT(*) FROM produits")->fetchColumn();
-    $totalOrders = (int) $pdo->query("SELECT COUNT(*) FROM commandes")->fetchColumn();
+    $totalOrders = (int) $pdo->query("SELECT COUNT(*) FROM commandes WHERE visible = true")->fetchColumn();
     $totalComments = (int) $pdo->query("SELECT COUNT(*) FROM commentaires")->fetchColumn();
     $revenue = (float) $pdo->query("SELECT COALESCE(SUM(p.prix),0) FROM commandes c JOIN produits p ON c.id_produit = p.id")->fetchColumn();
     ?>
@@ -83,40 +83,8 @@ include __DIR__ . '/../includes/header_admin.php';
 
     <div class="admin-card mt-40">
         <h3><i class="fas fa-truck"></i> Commandes</h3>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr class="table-head">
-                        <th>Client</th>
-                        <th class="text-center">Statut</th>
-                        <th class="text-right">Modifier</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $commandes = $pdo->query("SELECT * FROM commandes ORDER BY id DESC LIMIT 10")->fetchAll();
-                    foreach($commandes as $com): 
-                        // SECURITÉ : On vérifie si le client existe
-                        $client = isset($com['nom_client']) ? $com['nom_client'] : 'Anonyme';
-                    ?>
-                    <tr>
-                        <td><?php echo $client; ?></td>
-                        <td class="text-center">
-                            <span class="status-badge"><?php echo $com['statut_livraison']; ?></span>
-                        </td>
-                        <td class="text-right">
-                            <select onchange="window.location.href='update_livraison.php?id=<?php echo $com['id']; ?>&statut='+this.value">
-                                <option value="">---</option>
-                                <option value="En attente">Attente</option>
-                                <option value="Expédié">Parti</option>
-                                <option value="Livré">OK</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+        <p>Voir et gérer toutes les commandes dans une page dédiée.</p>
+        <a href="orders.php" class="btn-save">Ouvrir les commandes</a>
     </div>
 </div>
 
