@@ -23,9 +23,3 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('settings', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
     Route::resource('comments', App\Http\Controllers\Admin\CommentController::class)->only(['index', 'create', 'store']);
 });
-
-// Auth Routes (Fake for now or implement simply)
-Route::post('/logout', function() {
-    Auth::logout();
-    return redirect('/');
-})->name('logout');
