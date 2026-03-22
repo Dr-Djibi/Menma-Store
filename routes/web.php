@@ -11,7 +11,7 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.s
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
 
-Route::get('/admin/login', [App\Http\Controllers\Admin\AuthController::class, 'showLogin'])->name('admin.login');
+Route::get('/admin/login', [App\Http\Controllers\Admin\AuthController::class, 'showLogin'])->name('login');
 Route::post('/admin/login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.submit');
 Route::post('/admin/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
 
