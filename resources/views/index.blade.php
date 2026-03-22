@@ -42,6 +42,43 @@
 
     <div class="pagination-wrapper">
         {{ $products->links() }}
-    </div>
-</div>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Contactez-nous</h2>
+                    <p>Une question ? Une commande spéciale ? Notre équipe est disponible 7j/7 pour vous accompagner.</p>
+                    
+                    <div class="whatsapp-contact-card">
+                        <div class="whatsapp-pulse">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>Service Client WhatsApp</h3>
+                        <p>Réponse en moins de 10 minutes</p>
+                        <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '224625968097' }}" target="_blank" class="btn-whatsapp" style="display: block; text-decoration: none; color: white;">
+                            DISCUTER MAINTENANT
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label>Nom complet</label>
+                            <input type="text" placeholder="Votre nom..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Numéro de téléphone</label>
+                            <input type="tel" placeholder="Ex: 622 00 00 00" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Votre message</label>
+                            <textarea rows="4" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-send">ENVOYER LE MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
