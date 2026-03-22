@@ -23,3 +23,24 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('settings', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
     Route::resource('comments', App\Http\Controllers\Admin\CommentController::class)->only(['index', 'create', 'store']);
 });
+
+Route::get('/manifest.json', function() {
+    $settings = \App\Models\Setting::pluck('value', 'key');
+    return response()->json([
+        "name" => $settings['shop_name'] ?? "Menma Store",
+        "short_name" => $settings['shop_name'] ?? "Menma",
+        "description" => $settings['hero_title'] ?? "Boutique en ligne",
+        "start_url" => "/",
+        "display" => "standalone",
+        "background_color" => $settings['pwa_theme_color'] ?? "#ffffff",
+        "theme_color" => $settings['pwa_theme_color'] ?? "#2c3e50",
+        "icons" => [
+            [
+                "src" => (!empty($settings['pwa_icon']) ? url($settings['pwa_icon']) : url('/assets/img/icon-512.png')),
+                "sizes" => "512x512",
+                "type" => "image/png",
+                "purpose" => "any maskable"
+            ]
+        ]
+    ]);
+});

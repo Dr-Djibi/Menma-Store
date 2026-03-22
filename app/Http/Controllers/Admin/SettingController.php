@@ -18,6 +18,17 @@ class SettingController extends Controller
     {
         $settingsData = $request->input('settings', []);
         
+        // Gérer les uploads
+        if ($request->hasFile('shop_logo')) {
+            $path = $request->file('shop_logo')->store('public/branding');
+            $settingsData['shop_logo'] = str_replace('public/', '/storage/', $path);
+        }
+
+        if ($request->hasFile('pwa_icon')) {
+            $path = $request->file('pwa_icon')->store('public/branding');
+            $settingsData['pwa_icon'] = str_replace('public/', '/storage/', $path);
+        }
+
         foreach ($settingsData as $key => $value) {
             Setting::updateOrCreate(['key' => $key], ['value' => $value]);
         }

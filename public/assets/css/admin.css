@@ -126,20 +126,44 @@ body {
     background: rgba(254, 95, 85, 0.1);
 }
 
-/* bouton de copie dans le menu */
-.menu-admin .btn-copy-link {
-    background: none;
-    border: none;
-    color: #ccc;
-    font-size: 1.2rem;
-    padding: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.menu-admin .btn-copy-link:hover {
+.nav-actions .btn-public,
+.nav-actions .btn-copy-link {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+    border: none;
+}
+
+.nav-actions .btn-public {
+    background: var(--accent);
     color: white;
-    background: rgba(255,255,255,0.1);
+}
+
+.nav-actions .btn-copy-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    cursor: pointer;
+}
+
+.nav-actions .btn-copy-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.nav-actions .btn-copy-link.copied {
+    background: var(--success);
+    color: white;
 }
 
 /* variante compacte utilisée dans le menu */
