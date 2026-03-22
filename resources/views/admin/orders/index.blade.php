@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@php
+    /** @var \App\Models\Order[] $orders */
+@endphp
+
 @section('content')
 <div class="edit-container">
     <h2>📦 Gestion des Commandes</h2>
