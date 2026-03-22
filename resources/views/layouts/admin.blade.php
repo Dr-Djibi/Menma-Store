@@ -22,7 +22,13 @@
     </button>
     
     <div class="menu-admin" id="menuAdmin">
-        <span class="admin-user">Bonjour, {{ Auth::user()->name ?? 'Admin' }}</span>
+        <div class="user-info">
+            <span><i class="fas fa-user-circle"></i> {{ Auth::user()->name }}</span>
+            <form action="{{ route('admin.logout') }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit" class="logout-btn" style="background:none; border:none; color:inherit; cursor:pointer;"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+            </form>
+        </div>
 
         <a href="{{ route('admin.dashboard') }}" title="Liste des produits"><i class="fas fa-th-list"></i> <span>Produits</span></a>
         <a href="{{ route('admin.products.create') }}" title="Ajouter un produit"><i class="fas fa-plus-circle"></i> <span>Ajouter</span></a>
@@ -31,10 +37,6 @@
         <a href="{{ route('home') }}" target="_blank" title="Voir le site public" class="public-link btn-public">
             <i class="fas fa-eye"></i> <span>Voir</span>
         </a>
-        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-            @csrf
-            <button type="submit" class="logout" style="background:none; border:none; cursor:pointer; color:inherit;"><i class="fas fa-power-off"></i> <span>Déco</span></button>
-        </form>
     </div>
 </nav>
 

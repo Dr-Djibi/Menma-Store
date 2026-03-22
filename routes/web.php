@@ -11,7 +11,11 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.s
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::get('/admin/login', [App\Http\Controllers\Admin\AuthController::class, 'showLogin'])->name('admin.login');
+Route::post('/admin/login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('products', App\Http\Controllers\Admin\ProductController::class)->except(['index', 'show']);
     Route::resource('orders', App\Http\Controllers\Admin\OrderController::class)->only(['index', 'update', 'destroy']);
