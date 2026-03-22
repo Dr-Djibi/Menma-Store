@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: menma-store
+    env: php
+    buildCommand: "./build.sh"
+    preDeployCommand: "php artisan migrate --force"
+    startCommand: "heroku-php-apache2 public/"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: SESSION_DRIVER
+        value: cookie
+      - key: APP_KEY
+        generateValue: true
