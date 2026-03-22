@@ -91,15 +91,25 @@
     }
 
     .menu-admin .admin-user {
-        display: flex;
-        align-items: center;
-        border: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 0;
-        padding: 12px 20px;
-        margin: 0;
+        display: none;
+    }
+
+    .user-info {
+        flex-direction: column;
+        align-items: flex-start;
         width: 100%;
-        font-size: 0.85rem;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        gap: 8px;
+        margin: 0;
+    }
+
+    .user-info span {
+        font-size: 0.9rem;
+    }
+
+    .logout-btn {
+        padding: 5px 0 !important;
     }
 }
 
