@@ -52,12 +52,22 @@ body {
 }
 
 .logo {
-    font-weight: 800;
     font-size: 1.5rem;
-    color: #fff;
+    font-weight: 800;
+    color: white;
     text-decoration: none;
-    text-transform: uppercase;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    max-height: 38px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
 }
 
 .logo span {
