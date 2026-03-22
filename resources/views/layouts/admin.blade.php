@@ -11,6 +11,7 @@
     @yield('styles')
 </head>
 <body>
+@include('components.flash-messages')
 
 <nav class="nav-admin">
     <a href="{{ route('admin.dashboard') }}" class="logo">{{ $settings['admin_app_name'] ?? 'STORE ADMIN' }}<span>ADMIN</span></a>

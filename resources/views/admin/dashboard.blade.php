@@ -19,20 +19,24 @@
 
     <div class="stats-grid mt-20">
         <div class="stat-card">
+            <div class="stat-icon" style="color: var(--primary);"><i class="fas fa-box-open"></i></div>
             <h4 class="stat-title">Produits</h4>
             <p class="stat-value">{{ $totalProducts }}</p>
         </div>
         <div class="stat-card">
+            <div class="stat-icon" style="color: var(--warning);"><i class="fas fa-shopping-cart"></i></div>
             <h4 class="stat-title">Commandes</h4>
             <p class="stat-value">{{ $totalOrders }}</p>
         </div>
         <div class="stat-card">
-            <h4 class="stat-title">Commentaires</h4>
+            <div class="stat-icon" style="color: var(--secondary);"><i class="fas fa-comments"></i></div>
+            <h4 class="stat-title">Avis</h4>
             <p class="stat-value">{{ $totalComments }}</p>
         </div>
         <div class="stat-card">
+            <div class="stat-icon" style="color: var(--success);"><i class="fas fa-hand-holding-usd"></i></div>
             <h4 class="stat-title">Chiffre d'affaires</h4>
-            <p class="stat-value stat-green">{{ number_format($revenue, 0) }} FGn</p>
+            <p class="stat-value stat-green">{{ number_format($revenue, 0, ',', ' ') }} FGn</p>
         </div>
     </div>
 
