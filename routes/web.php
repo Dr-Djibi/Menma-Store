@@ -10,6 +10,7 @@ Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
+Route::post('/contact', [ProductController::class, 'contact'])->name('contact.send');
 
 Route::get('/admin/login', [App\Http\Controllers\Admin\AuthController::class, 'showLogin'])->name('login');
 Route::post('/admin/login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('admin.login.submit');

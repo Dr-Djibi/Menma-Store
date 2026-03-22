@@ -42,6 +42,8 @@
 
     <div class="pagination-wrapper">
         {{ $products->links() }}
+    </div>
+
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-grid">
@@ -62,20 +64,21 @@
                 </div>
 
                 <div class="contact-form-card">
-                    <form action="#" method="POST">
+                    <form action="{{ route('contact.send') }}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <label>Nom complet</label>
-                            <input type="text" placeholder="Votre nom..." required>
+                            <input type="text" name="name" placeholder="Votre nom..." required>
                         </div>
                         <div class="form-group">
                             <label>Numéro de téléphone</label>
-                            <input type="tel" placeholder="Ex: 622 00 00 00" required>
+                            <input type="tel" name="phone" placeholder="Ex: 622 00 00 00" required>
                         </div>
                         <div class="form-group">
                             <label>Votre message</label>
-                            <textarea rows="4" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                            <textarea name="message" rows="4" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
                         </div>
-                        <button type="submit" class="btn-send">ENVOYER LE MESSAGE</button>
+                        <button type="submit" class="btn-send">ENVOYER SUR WHATSAPP</button>
                     </form>
                 </div>
             </div>
