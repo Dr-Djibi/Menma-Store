@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'name' => 'required|string',
             'password' => 'required',
         ]);
 
@@ -29,7 +29,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Identifiants incorrects.',
+            'name' => 'Identifiants incorrects.',
         ]);
     }
 
@@ -38,6 +38,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('admin.login');
+        return redirect()->route('login');
     }
 }

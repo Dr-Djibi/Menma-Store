@@ -96,8 +96,8 @@
         <form action="{{ route('admin.login.submit') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Email Admin</label>
-                <input type="email" name="email" value="djibril@menma.com" required autofocus>
+                <label>Nom d'utilisateur</label>
+                <input type="text" name="name" value="Djibril" required autofocus>
             </div>
             <div class="form-group">
                 <label>Mot de Passe</label>
