@@ -23,7 +23,7 @@
     
     <div class="menu-admin" id="menuAdmin">
         <div class="user-info">
-            <span><i class="fas fa-user-circle"></i> {{ Auth::user()->name }}</span>
+            <span><i class="fas fa-user-circle"></i> {{ auth()->user()->name ?? 'Admin' }}</span>
             <form action="{{ route('admin.logout') }}" method="POST" style="display:inline;">
                 @csrf
                 <button type="submit" class="logout-btn" style="background:none; border:none; color:inherit; cursor:pointer;"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@php
+    /** @var \Illuminate\Pagination\LengthAwarePaginator $products */
+    /** @var array $settings */
+@endphp
+
 @section('content')
 <div class="hero-section">
     <h1>{{ $settings['hero_title'] ?? 'LIVRAISON GRATUITE' }}</h1>

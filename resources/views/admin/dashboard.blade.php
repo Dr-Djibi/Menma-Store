@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 
+@php
+    /** @var \App\Models\Product[] $products */
+    /** @var int $totalProducts */
+    /** @var int $totalOrders */
+    /** @var int $totalComments */
+    /** @var float $revenue */
+@endphp
+
 @section('content')
 <div class="edit-container">
     <div class="dashboard-header">
