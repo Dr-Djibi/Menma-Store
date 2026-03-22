@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@php
+    /** @var array $settings */
+@endphp
+
 @section('content')
 <div class="edit-container">
     <h2>➕ Ajouter un Nouveau Produit</h2>
