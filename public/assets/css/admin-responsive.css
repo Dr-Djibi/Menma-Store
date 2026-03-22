@@ -1,0 +1,173 @@
+/* Hamburger Menu Styles - Admin Responsive */
+
+/* Hamburger Menu - styles de base */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Responsive - Tablette et mobile (< 1024px) */
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-admin {
+        padding: 0 15px;
+    }
+
+    .menu-admin {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--dark);
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        gap: 0;
+        padding: 0;
+        align-items: stretch;
+        box-shadow: var(--shadow-md);
+    }
+
+    .menu-admin.active {
+        max-height: 600px;
+        padding: 15px 0;
+    }
+
+    .menu-admin a,
+    .menu-admin .btn-copy-link,
+    .menu-admin .btn-public {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+
+    .menu-admin a span {
+        display: inline;
+        color: #ccc;
+        font-weight: 500;
+    }
+
+    /* on cache le texte du bouton copie pour gagner de la place sur mobile/tablette */
+    .menu-admin .btn-copy-link span {
+        display: none;
+    }
+
+    .menu-admin a:hover span,
+    .menu-admin .btn-copy-link:hover {
+        color: white;
+    }
+
+    .menu-admin .admin-user {
+        display: flex;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0;
+        padding: 12px 20px;
+        margin: 0;
+        width: 100%;
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+    .nav-admin {
+        padding: 0 12px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .menu-admin.active {
+        max-height: 550px;
+    }
+
+    .menu-admin a {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        gap: 12px;
+    }
+
+    .menu-admin a i {
+        font-size: 1rem;
+    }
+
+    .menu-admin .admin-user {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Très petit écran (< 480px) */
+@media (max-width: 480px) {
+    .nav-admin {
+        padding: 0 10px;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .menu-toggle span {
+        width: 24px;
+        height: 2px;
+    }
+
+    .menu-admin.active {
+        max-height: 450px;
+    }
+
+    .menu-admin a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        gap: 10px;
+    }
+
+    .menu-admin a i {
+        font-size: 0.9rem;
+    }
+
+    .menu-admin a span {
+        font-size: 0.85rem;
+    }
+
+    .menu-admin .admin-user {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+}
