@@ -35,7 +35,10 @@
             <div class="image-inputs-grid">
                 <div class="form-group">
                     <label>Image Principale (Obligatoire)</label>
-                    <input type="text" name="image_url" placeholder="https://lien-image-1.jpg" required>
+                    <input type="text" name="image_url" id="image_url" placeholder="https://lien-image-1.jpg" required oninput="updatePreview(this, 'preview_main')">
+                    <div class="mt-10">
+                        <img id="preview_main" style="max-width: 150px; border-radius: 8px; border: 1px solid #ddd; display: none;">
+                    </div>
                 </div>
                 <div class="form-group-row">
                     <div><label>Image 2</label><input type="text" name="image_url2"></div>

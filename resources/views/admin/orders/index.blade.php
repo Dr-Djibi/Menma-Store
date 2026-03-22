@@ -32,7 +32,7 @@
                             <form action="{{ route('admin.orders.update', $order->id) }}" method="POST">
                                 @csrf
                                 @method('PATCH')
-                                <select name="statut_livraison" onchange="this.form.submit()">
+                                <select name="statut_livraison" onchange="this.form.submit()" class="status-select {{ $order->statut_livraison == 'en attente' ? 'pending' : ($order->statut_livraison == 'livré' ? 'delivered' : 'cancelled') }}">
                                     <option value="en attente" {{ $order->statut_livraison == 'en attente' ? 'selected' : '' }}>En attente</option>
                                     <option value="livré" {{ $order->statut_livraison == 'livré' ? 'selected' : '' }}>Livré</option>
                                     <option value="annulé" {{ $order->statut_livraison == 'annulé' ? 'selected' : '' }}>Annulé</option>

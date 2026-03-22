@@ -25,3 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
     attachCopy(document.getElementById('copyLinkBtn'));
     attachCopy(document.getElementById('copyMenuLinkBtn'));
 });
+window.updatePreview = function(input, targetId) {
+    const preview = document.getElementById(targetId);
+    if (preview) {
+        if (input.value) {
+            preview.src = input.value;
+            preview.style.display = 'block';
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+};

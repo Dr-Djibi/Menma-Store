@@ -32,7 +32,10 @@
             <div class="image-inputs-grid">
                 <div class="form-group">
                     <label>Image Principale (Obligatoire)</label>
-                    <input type="text" name="image_url" value="{{ $product->image_url }}" required>
+                    <input type="text" name="image_url" id="image_url" value="{{ $product->image_url }}" required oninput="updatePreview(this, 'preview_main')">
+                    <div class="mt-10">
+                        <img id="preview_main" src="{{ $product->image_url }}" style="max-width: 150px; border-radius: 8px; border: 1px solid #ddd; display: {{ $product->image_url ? 'block' : 'none' }};">
+                    </div>
                 </div>
                 <div class="form-group-row">
                     <div><label>Image 2</label><input type="text" name="image_url2" value="{{ $product->image_url2 }}"></div>
